@@ -4,3 +4,11 @@
  * HINT:
  * It's possible to solve this problem both with and without subqueries.
  */
+SELECT title
+FROM film
+INNER JOIN inventory USING (film_id)
+INNER JOIN rental USING (inventory_id)
+WHERE customer_id = 1
+GROUP BY title, customer_id
+HAVING count(*) > 1
+;
